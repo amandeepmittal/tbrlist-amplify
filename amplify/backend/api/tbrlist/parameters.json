@@ -1,0 +1,4 @@
+{
+    "AppSyncApiName": "tbrlist",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST"
+}

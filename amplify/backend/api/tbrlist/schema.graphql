@@ -1,0 +1,5 @@
+type Book @model {
+	id: ID!
+	title: String!
+	author: String
+}
