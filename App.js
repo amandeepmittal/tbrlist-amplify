@@ -7,6 +7,16 @@ Amplify.configure(config);
 
 import { API, graphqlOperation } from 'aws-amplify';
 
+const ListBooks = `
+query {
+  listBooks {
+    items {
+      id title author
+    }
+  }
+}
+`;
+
 const AddBook = `
 mutation ($title: String! $author: String) {
   createBook(input: {
@@ -24,6 +34,16 @@ export default class App extends React.Component {
 		author: '',
 		books: []
 	};
+
+	async componentDidMount() {
+		try {
+			const books = await API.graphql(graphqlOperation(ListBooks));
+			console.log('books: ', books);
+			this.setState({ books: books.data.listBooks.items });
+		} catch (err) {
+			console.log('error: ', err);
+		}
+	}
 
 	onChangeText = (key, val) => {
 		this.setState({ [key]: val });
@@ -62,6 +82,12 @@ export default class App extends React.Component {
 					placeholder="Who wrote it?"
 				/>
 				<Button onPress={this.addBook} title="Add to TBR" color="#eeaa55" />
+				{this.state.books.map((book, index) => (
+					<View key={index} style={styles.book}>
+						<Text style={styles.title}>{book.title}</Text>
+						<Text style={styles.author}>{book.author}</Text>
+					</View>
+				))}
 			</View>
 		);
 	}
@@ -79,5 +105,12 @@ const styles = StyleSheet.create({
 		borderBottomWidth: 2,
 		borderBottomColor: 'blue',
 		marginVertical: 10
-	}
+	},
+	book: {
+		borderBottomWidth: 1,
+		borderBottomColor: '#ddd',
+		paddingVertical: 10
+	},
+	title: { fontSize: 16 },
+	author: { color: 'rgba(0, 0, 0, .5)' }
 });

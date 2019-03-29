@@ -1,8 +1,8 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 23134,
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
   "expoServerNgrokUrl": "https://tu-iti.amanhimself.tbrlist-amplify.exp.direct",
   "packagerNgrokUrl": "https://packager.tu-iti.amanhimself.tbrlist-amplify.exp.direct",
   "ngrokPid": 23153
