@@ -2,6 +2,8 @@
 
 React Native, Expo, AWS Amplify, AppAsync TBR LIST app
 
+You can find the complete tutorial for this demo at [this link](https://pusher.com/tutorials/serverless-react-native-aws-amplify).
+
 ## Pre-requisites
 
 You are going to need the following installed on your local dev machine in order to follow this tutorial.
